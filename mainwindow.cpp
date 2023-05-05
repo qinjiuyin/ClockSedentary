@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    Clock = 1800000; //30分钟
+    Clock = 1800000; //30分钟 1800000 10分钟 600000
     state = 0; //0在计数30分钟
     value = 0;
     QMessageBox::information(nullptr, "标题", "Start Work Sitting Posture!", QMessageBox::Ok);
