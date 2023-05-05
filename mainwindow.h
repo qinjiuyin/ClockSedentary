@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <Qtimer>
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +18,14 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QTimer tim;
+    QTimer timUI;
+    int Clock;
+    int state;
+    int value;
+public slots:
+    void onTimeOut();
+    void onTimeOutUI();
 };
 
 #endif // MAINWINDOW_H
