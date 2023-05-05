@@ -11,7 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
     state = 0; //0在计数30分钟
     value = 0;
     QMessageBox::information(nullptr, "标题", "Start Work Sitting Posture!", QMessageBox::Ok);
-    connect(&tim,SIGNAL(timeout()),this,SLOT(onTimeOut()));
+    connect(&tim,&QTimer::timeout,this,&MainWindow::onTimeOut);
+    tim.setTimerType(Qt::PreciseTimer);  //
     tim.setInterval(1);
     tim.start();
     connect(&timUI,SIGNAL(timeout()),this,SLOT(onTimeOutUI()));
