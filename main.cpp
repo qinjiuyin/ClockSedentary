@@ -1,23 +1,17 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <QThread>
-
+#include <QWidget>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    w.setMinimumSize(236, 135);
-    w.setMaximumSize(236, 135);
+    w.setMinimumSize(180, 60);
+    w.setMaximumSize(180, 60);
+    w.setWindowFlags(Qt::WindowStaysOnTopHint); //置顶 没找到定时器不休眠的办法
+    w.setWindowFlags(w.windowFlags() & ~Qt::WindowMinimizeButtonHint);//关闭最小化防止点到最小化
     w.show();
-
- //   while(1)
- //   {
- //       QThread::sleep(30*60);
- //       QMessageBox::information(nullptr, "标题", "30 minutes have passed, and I need to rest and walk around for 10 minutes!", QMessageBox::Ok);
- //       QThread::sleep(10*60);
- //      QMessageBox::information(nullptr, "标题", "10 minutes have passed, and I need to rest and walk around for 10 minutes!", QMessageBox::Ok);
- //   }
 
     return a.exec();
 }
