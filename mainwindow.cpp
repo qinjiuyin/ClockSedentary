@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     tim.setInterval(1);
     tim.start();
     connect(&timUI,SIGNAL(timeout()),this,SLOT(onTimeOutUI()));
-    timUI.start(5);
+    timUI.start(10);
 }
 
 MainWindow::~MainWindow()
@@ -28,21 +28,21 @@ void MainWindow::onTimeOut()
     value++;
     if(value>=Clock)
     {
-        if(state == 0)
+        if(state)
         {
             //到了30分钟
             value = 0;
             Clock = 1800000;
-            state = 1;
-            QMessageBox::information(nullptr, "标题", "30 minutes have passed, and I need to rest and walk around for 10 minutes!", QMessageBox::Ok);
+            state = 0;
+            QMessageBox::information(nullptr, "标题", "10 minutes have passed, and I need to rest and walk around for 10 minutes!", QMessageBox::Ok);
         }
         else
         {
             //到了10分钟
             value = 0;
             Clock = 600000;
-            state = 0;
-            QMessageBox::information(nullptr, "标题", "10 minutes have passed, and I need to rest and walk around for 10 minutes!", QMessageBox::Ok);
+            state = 1;
+            QMessageBox::information(nullptr, "标题", "30 minutes have passed, and I need to rest and walk around for 10 minutes!", QMessageBox::Ok);
         }
     }
 }
